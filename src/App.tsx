@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from './pages/Home/Home';
+import Profile from './pages/Profile/Profile';
+import SearchList from './pages/SearchList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Nav className="me-auto">
+            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/profile">Profile</Link>
+            <Link className="nav-link" to="/search-list">Search Result</Link>
+          </Nav>
+        </Container>
+      </Navbar>
+
+      <hr style={{ margin: 0 }} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="search-list" element={<SearchList />} />
+      </Routes>
     </div>
   );
 }
